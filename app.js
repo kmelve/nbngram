@@ -3,6 +3,7 @@ var chart1; // globally available
 
 function highcharts(data) {
 			console.log(data.x_axis,data.y_axis,data.z_axis);
+			searchstring = $.trim($("#search__button").val());
 			chart1 = new Highcharts.Chart({
 				chart: {
 					renderTo: 'highcharts',
@@ -10,7 +11,7 @@ function highcharts(data) {
 					zoomType: 'x'
 					},
 				title: {
-					text: 'NB Ngrams for "' + data.searchstring + '"'
+					text: 'NB Ngrams for "' + searchstring + '"'
 					},
 				subtitle: {
 					text: 'Source: nb.no/ngrams'
@@ -23,22 +24,28 @@ function highcharts(data) {
 					],
 				yAxis: [
 					{ // Primary yAxis
+						floor: 0,
 						labels: {
 							format: '{value} hits'
 							},
 						title: {
 							text: 'Relative frequencies',
 							},
-						opposite: true
+							opposite: true,
+							showEmpty: false
+
 					},
 					{ // Secondary yAxis
-						gridLineWidth: 0,
+						floor: 0,
+
 						title: {
 							text: 'Absolute frequencies'
 							},
 						labels: {
 							format: '{value} %',
-							}
+							},
+							opposite: false,
+							showEmpty: false
 						}
 					],
 				tooltip: {
@@ -60,7 +67,7 @@ function highcharts(data) {
 					{
 					name: 'Relative frequencies',
 					type: 'area',
-					yAxis: 0,
+					yAxis: 1,
 					data: data.y_axis,
 					marker: {
 						enabled: false
@@ -85,20 +92,24 @@ function highcharts(data) {
 			});
 	}
 function nbSearch(callback) {
-		var searchstring = $.trim($("#search").val()).replace(' ', '+');
+		var searchUrl = 'http://www.nb.no/sp_tjenester/beta/ngram_1/ngram/query?terms=';
+		var searchParameter = '&lang=all&' + $("#search").serialize();
+		var searchString = $.trim($("#search__button").val());
+		var searchQuery = searchUrl+searchString+searchParameter;
 		$.ajax({
 		url: 'proxy.php',
 		type: 'GET',
 		dataType: 'json',
-		data: {searchstring: searchstring},
+		data: {searchquery: searchQuery}
 		})
 		.done(function(data) {
-			console.log("success");
 			callback(data.metadata);
 		})
 		.fail(function(xhr, ajaxOptions, thrownError) {
 			console.log(xhr.status);
 			console.log(thrownError);
+			console.log(searchquery);
+			$("results").append("Something went wrong. Sorry!");
 		})
 		.always(function() {
 			console.log("complete");
@@ -117,12 +128,6 @@ function nbSearch(callback) {
 			// var searchurl = "http://www.nb.no/services/search/v2/search?q=";
 			// var searchparameter = searchstring+data´+searchparameters;
 			// $("#parameter").append().html("Search parameter string: <a href="+searchurl+searchparameter+"><code>?q="+searchparameter+"</code></a>");
-
-
-
-
-
-
 
 
 

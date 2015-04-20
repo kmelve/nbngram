@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>NB Ngram ---> plotly</title>
+	<title>NB Ngram Alt</title>
 	<!-- <link rel="stylesheet" href=""> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" text="text/javascript"></script>
     <script src="bower_components/highcharts/highcharts.js"></script>
@@ -16,9 +16,13 @@
         <p>This is an alternative to the fantastic <a href="http://nb.no/ngram">NB Ngram</a>, written part as an coding exercise, but in order to generate a large array of graphs.</p>
     </header>
     <section>
+    <p><em>Only 1-grams (one word) works for now</em></p>
         <div id="container">
-            <form>
-                <input type="text" id="search" placeholder="Text goes here!"/>
+            <form id="search">
+                <input type="text" id="search__button" placeholder="Text goes here!"/>
+                <input type="radio" name="corpus" value="bok" checked>Bok <input type="radio" name="corpus" value="avis">Avis
+                Case Insensitive: <input type="radio" name="case_sens" value="0" checked>On <input type="radio" name="case_sens" value="1">Off
+
                 <input type="submit" id="button" value="Get those Ngrams!" />
             </form>
         </div>
