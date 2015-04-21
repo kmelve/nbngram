@@ -30,7 +30,7 @@ function highcharts(data) {
 							format: '{value} hits'
 							},
 						title: {
-							text: 'Relative frequencies',
+							text: 'Absolute frequencies',
 							},
 							opposite: true,
 							showEmpty: false
@@ -40,7 +40,7 @@ function highcharts(data) {
 						floor: 0,
 
 						title: {
-							text: 'Absolute frequencies'
+							text: 'Relative frequencies'
 							},
 						labels: {
 							format: '{value} %',
