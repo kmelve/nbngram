@@ -1,0 +1,31 @@
+{
+  "name": "nbngramalt",
+  "version": "0.0.1",
+  "homepage": "https://github.com/kmelve/nbngram",
+  "authors": [
+    "Knut Melvær <knut.melvaer@gmail.com>"
+  ],
+  "description": "NB Ngram Alt is an alternative NB Ngram viewer",
+  "main": "index.php",
+  "keywords": [
+    "ngram",
+    "digital",
+    "humanities",
+    "words",
+    "concepts",
+    "nasjonalbiblioteket"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.1",
+    "highcharts": "~4.1.5"
+  }
+}

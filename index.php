@@ -19,7 +19,7 @@
  <div class="row">
     <header class="small-12 columns">
         <h1>NB Ngram Alt</h1>
-        <p>This is an alternative to the fantastic <a href="http://nb.no/ngram">NB Ngram</a>. I wrote it partly as a coding exercise, but also to generate alternative graphs. Highchars.js provides more export options and possibilities for dymamic rendering. I also plan to generate <a href="http://xkcdgraphs.com/">XKCD-style graphs</a>, <a href="https://plot.ly/">plot.ly</a> export and a <a href="http://en.wikipedia.org/wiki/Sparkline">sparkline</a> generator.</p>
+        <p>This is an alternative to the fantastic <a href="http://www.nb.no/sp_tjenester/beta/ngram_1">NB Ngram</a>. I wrote it partly as a coding exercise, but also to generate alternative graphs. Highchars.js provides more export options and possibilities for dymamic rendering. I also plan to add options for <a href="http://xkcdgraphs.com/">XKCD-style graphs</a>, <a href="https://plot.ly/">plot.ly</a> exports and a <a href="http://en.wikipedia.org/wiki/Sparkline">sparkline</a> generator.</p>
     </header>
 </div>
 <hr />
