@@ -4,37 +4,95 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>NB Ngram Alt</title>
-	<!-- <link rel="stylesheet" href=""> -->
+
+	<link rel="stylesheet" href="bower_components/foundation/css/normalize.css">
+	<link rel="stylesheet" href="css/foundation.css">
+	<link rel="stylesheet" href="css/main.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" text="text/javascript"></script>
     <script src="bower_components/highcharts/highcharts.js"></script>
     <script src="bower_components/highcharts/modules/exporting.js"></script>
+
     <script src="app.js"></script>
+
 </head>
 <body>
-    <header>
+ <div class="row">
+    <header class="small-12 columns">
         <h1>NB Ngram Alt</h1>
-        <p>This is an alternative to the fantastic <a href="http://nb.no/ngram">NB Ngram</a>, written part as an coding exercise, but in order to generate a large array of graphs.</p>
+        <p>This is an alternative to the fantastic <a href="http://nb.no/ngram">NB Ngram</a>. I wrote it partly as a coding exercise, but also to generate alternative graphs. Highchars.js provides more export options and possibilities for dymamic rendering. I also plan to generate <a href="http://xkcdgraphs.com/">XKCD-style graphs</a>, <a href="https://plot.ly/">plot.ly</a> export and a <a href="http://en.wikipedia.org/wiki/Sparkline">sparkline</a> generator.</p>
     </header>
+</div>
+<hr />
     <section>
-    <p><em>Only 1-grams (one word) works for now</em></p>
         <div id="container">
             <form id="search">
-                <input type="text" id="search__button" placeholder="Text goes here!"/>
-                <input type="radio" name="corpus" value="bok" checked>Bok <input type="radio" name="corpus" value="avis">Avis
-                Case Insensitive: <input type="radio" name="case_sens" value="0" checked>On <input type="radio" name="case_sens" value="1">Off
-
-                <input type="submit" id="button" value="Get those Ngrams!" />
+            	<div class="row">
+            		<div class="small-4 columns">
+            		<label for="search_button">Only 1-grams (one word) works for now.
+                		<input type="text" id="search__button" placeholder="Text goes here!"/>
+                	</label>
+            		</div>
+                	<div class="small-4 columns">
+                	<p>
+                		<label for="button__bok">Choose corpus:
+                		<input type="radio" name="corpus" value="avis"> Newspapers
+                		<input id="button__bok" type="radio" name="corpus" value="bok"> Books
+                		</label>
+                	</p>
+                	<p>
+                		<label for="button__case">Case sensitivity:
+                		<input id="button__case" type="radio" name="case_sens" value="0" checked> Aa
+                		<input type="radio" name="case_sens" value="1"> A/a
+                		</label>
+                	</p>
+                	</div>
+                	<div class="small-4 columns">
+                		<input type="submit" class="button" value="Get those Ngrams!" />
+                	</div>
+                </div>
             </form>
+
+        <div id="highcharts">
         </div>
-        <div id="highcharts"></div>
-        <div id="results"></div>
-        <div id="parameter"></div>
+        <div class="row">
+        <div id="results" class="small-12 columns">
+        <p>Check <a href="https://developer.chrome.com/devtools/docs/shortcuts">console</a> for raw data.</p>
+        	<!-- <ul class="accordion" data-accordion>
+  				<li class="accordion-navigation">
+    				<a href="#relative">Relative frequencies</a>
+    				<div id="panel1a" class="content active">
+    				</div>
+  				</li>
+  				<li class="accordion-navigation">
+    				<a href="#absolute">Absolute frequencies</a>
+    				<div id="panel2a" class="content">
+    				</div>
+  				</li>
+  				<li class="accordion-navigation">
+    				<a href="#years">Years</a>
+    				<div id="panel3a" class="content">
+    				</div>
+  				</li>
+  				<li class="accordion-navigation">
+    				<a href="#searchdata">Search data</a>
+    				<div id="panel3a" class="content">
+    				</div>
+  				</li>
+			</ul> -->
+        </div>
+    </div>
+
     </section>
+</div>
+<div class="row">
+<div class="small-12 columns">
     <footer>
         <p>NB Ngram Alt is developed by <a href="mailto:knut.melvaer@gmail.com">Knut Melvær</a> (<a href="https://twitter.com/kmelve">@kmelve</a>). NB Ngram Alt is a free service for education and research.</p>
         <p><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">NB Ngram Alt</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://github.com/kmelve/nbngam" property="cc:attributionName" rel="cc:attributionURL">Knut Melvær</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="http://github.com/kmelve/nbgraph" rel="dct:source">http://github.com/kmelve/nbngram</a>.</p>
         <p><a href="http://highcharts.com">Highcharts</a> is licensed under <a href="http://creativecommons.org/licenses/by-nc/3.0/">CC-BY-NC-3.0</a>, which means you can use it for free for non-profit and with attribution.</p>
     </footer>
+</div>
+</div>
 </body>
 
 </html>

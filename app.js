@@ -4,6 +4,7 @@ var chart1; // globally available
 function highcharts(data) {
 			console.log(data.x_axis,data.y_axis,data.z_axis);
 			searchstring = $.trim($("#search__button").val());
+			$('#highcharts').append('<small>You can toggle the graphs by cliking their names in the legend.</small>');
 			chart1 = new Highcharts.Chart({
 				chart: {
 					renderTo: 'highcharts',
@@ -52,9 +53,7 @@ function highcharts(data) {
 					shared: true
 					},
 					legend: {
-						title : {
-							text: "Click toggle graphs"
-							},
+
 						layout: 'vertical',
 						align: 'left',
 						x: 80,
@@ -91,6 +90,12 @@ function highcharts(data) {
 				}]
 			});
 	}
+function rawData(data) {
+	var str_metadata = JSON.stringify(data, null, 2);
+	//$("#results").show("fast");
+	$("#results").append(str);
+
+}
 function nbSearch(callback) {
 		var searchUrl = 'http://www.nb.no/sp_tjenester/beta/ngram_1/ngram/query?terms=';
 		var searchParameter = '&lang=all&' + $("#search").serialize();
@@ -120,6 +125,7 @@ function nbSearch(callback) {
 		e.preventDefault();
 		nbSearch(function(result){
 			highcharts(result);
+			//rawData(result);
 		});
 	});
 

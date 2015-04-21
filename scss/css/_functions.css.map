@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "_functions.css",
+	"sources": [
+		"../foundation/_functions.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "",
+	"names": []
+}
