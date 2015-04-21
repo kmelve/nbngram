@@ -35,7 +35,7 @@
                 	<div class="small-4 columns">
                 	<p>
                 		<label for="button__bok">Choose corpus:
-                		<input type="radio" name="corpus" value="avis"> Newspapers
+                		<input type="radio" name="corpus" value="avis" checked> Newspapers
                 		<input id="button__bok" type="radio" name="corpus" value="bok"> Books
                 		</label>
                 	</p>
