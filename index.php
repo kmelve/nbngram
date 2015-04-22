@@ -16,19 +16,30 @@
 
 </head>
 <body>
- <div class="row">
-    <header class="small-12 columns">
-        <h1>NB Ngram Alt</h1>
-        <p>This is an alternative to the fantastic <a href="http://www.nb.no/sp_tjenester/beta/ngram_1">NB Ngram</a>. I wrote it partly as a coding exercise, but also to generate alternative graphs. Highchars.js provides more export options and possibilities for dymamic rendering. I also plan to add options for <a href="http://xkcdgraphs.com/">XKCD-style graphs</a>, <a href="https://plot.ly/">plot.ly</a> exports and a <a href="http://en.wikipedia.org/wiki/Sparkline">sparkline</a> generator.</p>
-    </header>
+<a href="https://github.com/kmelve/nbngram"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+<header>
+	 <div class="row">
+		        <h1>NB Ngram Alt</h1>
+	 	<div class="small-12 medium-6 columns">
+		        <p>This is an alternative to the fantastic <a href="http://www.nb.no/sp_tjenester/beta/ngram_1">NB Ngram</a>. I wrote it partly as a coding exercise, but also to generate alternative graphs. Highchars.js provides more export options and possibilities for dymamic rendering. I also plan to add options for <a href="http://xkcdgraphs.com/">XKCD-style graphs</a>, <a href="https://plot.ly/">plot.ly</a> exports and a <a href="http://en.wikipedia.org/wiki/Sparkline">sparkline</a> generator.</p>
+	    </div>
+	    <div class="small-12 medium-4 columns end">
+	    	<ul>
+	        	<li>You can merge ngrams with '+' (e.g. <em>eple+epler</em>)</li>
+	        	<li>True ngram search now works (e.g. <em>kvinnelig sjåfør</em> or <em>satse på kvalitet</em>)</li>
+	        	<li>Wildcards, multiple ngram series doesn't work</li>
+	        </ul>
+
+	    </div>
 </div>
+</header>
 <hr />
     <section>
         <div id="container">
             <form id="search">
             	<div class="row">
             		<div class="small-4 columns">
-            		<label for="text_input">Only 1-grams (one word) works for now.
+            		<label for="text_input">
                 		<input type="text" id="text_input" placeholder="Text goes here!"/>
                 	</label>
             		</div>

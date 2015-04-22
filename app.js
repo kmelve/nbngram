@@ -105,7 +105,7 @@ function rawData(data) {
 function nbSearch(callback) {
 		var searchUrl = 'http://www.nb.no/sp_tjenester/beta/ngram_1/ngram/query?terms=';
 		var searchParameter = '&lang=all&' + $("#search").serialize();
-		var searchString = $("#text_input").val();
+		var searchString = encodeURIComponent($("#text_input").val());
 		var searchQuery = searchUrl+searchString+searchParameter;
 		$.ajax({
 		url: 'proxy.php',
