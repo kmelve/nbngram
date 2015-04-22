@@ -5,9 +5,16 @@ $( "#text_input" ).focus();
 function highcharts(data) {
 			console.log(data.x_axis,data.y_axis,data.z_axis);
 			console.log(data);
+			var date = getDate();
+			var filename = data.ngram + '-' + data.corpus + '-' + date;
+			console.log(filename);
+
 			$('#highcharts').append('<small>You can toggle the graphs by cliking their names in the legend.</small>');
 			chart1 = new Highcharts.Chart({
 				chart: {
+					exporting: {
+            			filename: filename
+        			},
 					renderTo: 'highcharts',
 					type: 'area',
 					zoomType: 'x'
@@ -120,6 +127,14 @@ function nbSearch(callback) {
 		.always(function() {
 			console.log("complete");
 		});
+}
+
+function getDate() {
+		var d = new Date();
+		var day = d.getDate();
+		var month = d.getMonth()+1;
+		var year = d.getFullYear();
+		return day + '-' + month + '-' + year;
 }
 
 	$("form").submit(function(e){
