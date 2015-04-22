@@ -23,6 +23,7 @@ function highcharts(data) {
 				xAxis: [
 					{
 						categories: data.x_axis,
+						type: 'datetime',
 						crosshair: true
 						}
 					],
