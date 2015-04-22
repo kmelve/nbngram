@@ -1,9 +1,10 @@
 $(document).ready(function() {
 var chart1; // globally available
+$( "#text_input" ).focus();
 
 function highcharts(data) {
 			console.log(data.x_axis,data.y_axis,data.z_axis);
-			searchstring = $.trim($("#search__button").val());
+			console.log(data);
 			$('#highcharts').append('<small>You can toggle the graphs by cliking their names in the legend.</small>');
 			chart1 = new Highcharts.Chart({
 				chart: {
@@ -12,7 +13,7 @@ function highcharts(data) {
 					zoomType: 'x'
 					},
 				title: {
-					text: 'NB Ngrams for "' + searchstring + '"'
+					text: 'NB Ngrams for "' + data.ngram + '" in ' + data.corpus
 					},
 				subtitle: {
 					text: 'Source: nb.no/ngrams'
@@ -99,7 +100,7 @@ function rawData(data) {
 function nbSearch(callback) {
 		var searchUrl = 'http://www.nb.no/sp_tjenester/beta/ngram_1/ngram/query?terms=';
 		var searchParameter = '&lang=all&' + $("#search").serialize();
-		var searchString = $.trim($("#search__button").val());
+		var searchString = $("#text_input").val();
 		var searchQuery = searchUrl+searchString+searchParameter;
 		$.ajax({
 		url: 'proxy.php',
@@ -120,7 +121,7 @@ function nbSearch(callback) {
 			console.log("complete");
 		});
 }
-	$( "#search" ).focus();
+
 	$("form").submit(function(e){
 		e.preventDefault();
 		nbSearch(function(result){

@@ -28,8 +28,8 @@
             <form id="search">
             	<div class="row">
             		<div class="small-4 columns">
-            		<label for="search_button">Only 1-grams (one word) works for now.
-                		<input type="text" id="search__button" placeholder="Text goes here!"/>
+            		<label for="text_input">Only 1-grams (one word) works for now.
+                		<input type="text" id="text_input" placeholder="Text goes here!"/>
                 	</label>
             		</div>
                 	<div class="small-4 columns">
@@ -47,7 +47,9 @@
                 	</p>
                 	</div>
                 	<div class="small-4 columns">
-                		<input type="submit" class="button" value="Get those Ngrams!" />
+                	<label for="search_button">
+                		<input type="submit" class="button" id="searh_button" value="Get those Ngrams!" />
+                	</label>
                 	</div>
                 </div>
             </form>

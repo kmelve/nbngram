@@ -4,7 +4,9 @@
 	if(isset($_GET['searchquery']) && !empty($_GET['searchquery'])) {
 		header('Content-type: application/json');
 		$searchstring = $_GET['searchquery'];
-
+		$ngram = explode("=", explode("&", $searchstring)[0])[1];
+		$corpus = explode("=", explode("&", $searchstring)[2])[1];
+		$corpus = ($corpus == "avis") ? "newspapers" : "books";
 
 		$json = file_get_contents($searchstring);
 		$data = json_decode($json, true);
@@ -22,12 +24,13 @@
 
 
 		echo json_encode(
+
 			 array("metadata" => array(
 							"y_axis" => $y_axis,
 							"x_axis" => $x_axis,
 							"z_axis" => $z_axis,
-							"searchstring" => $searchstring,
-							"searchparameters" => $searchparameters
+							"ngram" => $ngram,
+							"corpus" => $corpus
 							))
 			 );
 	} else {
