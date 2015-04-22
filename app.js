@@ -3,11 +3,9 @@ var chart1; // globally available
 $( "#text_input" ).focus();
 
 function highcharts(data) {
-			console.log(data.x_axis,data.y_axis,data.z_axis);
-			console.log(data);
+			console.log(data.x_axis,data.y_axis,data.z_axis,data.ngram,data.corpus);
 			var date = getDate();
 			var filename = data.ngram + '-' + data.corpus + '-' + date;
-			console.log(filename);
 
 			$('#highcharts').append('<small>You can toggle the graphs by cliking their names in the legend.</small>');
 			chart1 = new Highcharts.Chart({
