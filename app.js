@@ -5,14 +5,11 @@ $( "#text_input" ).focus();
 function highcharts(data) {
 			console.log(data.x_axis,data.y_axis,data.z_axis,data.ngram,data.corpus);
 			var date = getDate();
-			var filename = data.ngram + '-' + data.corpus + '-' + date;
+			var exportname = data.ngram + '-' + data.corpus + '-' + date;
 
 			$('#highcharts').append('<small>You can toggle the graphs by cliking their names in the legend.</small>');
 			chart1 = new Highcharts.Chart({
 				chart: {
-					exporting: {
-            			filename: filename
-        			},
 					renderTo: 'highcharts',
 					type: 'area',
 					zoomType: 'x'
@@ -93,7 +90,10 @@ function highcharts(data) {
 					tooltip: {
 						valueSuffix: ' hits'
 					}
-				}]
+				}],
+				exporting: {
+            			filename: exportname
+        			}
 			});
 	}
 function rawData(data) {
