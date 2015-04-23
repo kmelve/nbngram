@@ -1,4 +1,4 @@
-# NB Ngram Alt
+![NB Ngram Alt](logo.png)
 
 NB Ngram Alt is an alternative viewer for [NB Ngram][1], which is developed by [Språkbanken][2].
 
