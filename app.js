@@ -77,7 +77,9 @@ function highcharts(data) {
 					},
 					tooltip: {
 						valueSuffix: ' percent'
-						}
+						},
+					connectNulls: true
+
 					},
 					{
 					name: 'Absolute frequencies',
@@ -90,7 +92,8 @@ function highcharts(data) {
 					dashStyle: 'shortdot',
 					tooltip: {
 						valueSuffix: ' hits'
-					}
+					},
+					connectNulls: true
 				}],
 				exporting: {
             			filename: exportname
@@ -108,6 +111,7 @@ function nbSearch(callback) {
 		var searchParameter = '&lang=all&' + $("#search").serialize();
 		var searchString = encodeURIComponent($("#text_input").val());
 		var searchQuery = searchUrl+searchString+searchParameter;
+		console.log(searchQuery);
 		$.ajax({
 		url: 'proxy.php',
 		type: 'GET',
@@ -124,10 +128,9 @@ function nbSearch(callback) {
 			$("results").append("Something went wrong. Sorry!");
 		})
 		.always(function() {
-			console.log("complete");
+			$( "#text_input" ).focus();
 		});
 }
-
 function getDate() {
 		var d = new Date();
 		var day = d.getDate();
@@ -141,53 +144,7 @@ function getDate() {
 		nbSearch(function(result){
 			highcharts(result);
 			//rawData(result);
+			//sparklines(result);
 		});
 	});
-
 });
-
-			// var searchurl = "http://www.nb.no/services/search/v2/search?q=";
-			// var searchparameter = searchstring+data´+searchparameters;
-			// $("#parameter").append().html("Search parameter string: <a href="+searchurl+searchparameter+"><code>?q="+searchparameter+"</code></a>");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-function nbSearch(gram){
-	$.ajax({
-	url: 'proxy.php',
-	type: 'GET',
-	dataType: 'json',
-	data: {searchstring: gram},
-	})
-	.done(function(data) {
-		console.log("success");
-		console.log(data);
-		gram(data);
-	})
-	.fail(function(xhr, ajaxOptions, thrownError) {
-		console.log(xhr.status);
-		console.log(thrownError);
-	})
-	.always(function() {
-		console.log("complete");
-	});
-
-*/
-
-

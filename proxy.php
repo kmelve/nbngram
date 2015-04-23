@@ -4,6 +4,7 @@
 	if(isset($_GET['searchquery']) && !empty($_GET['searchquery'])) {
 		header('Content-type: application/json');
 		$searchstring = $_GET['searchquery'];
+		//$searchstring = "http://www.nb.no/sp_tjenester/beta/ngram_1/ngram/query?terms=spirituell&lang=all&corpus=avis&case_sens=0";
 		$ngram = explode("=", explode("&", urldecode($searchstring))[0])[1];
 		$corpus = explode("=", explode("&", $searchstring)[2])[1];
 		$corpus = ($corpus == "avis") ? "newspapers" : "books";
@@ -13,26 +14,50 @@
 
 		$y_axis = array();
 		$x_axis = array();
-		$z_avis = array();
+		$z_axis = array();
+		$x_axis1 = array();
+		$z_axis1 = array();
+		$yearspan = array();
 
-		foreach($data[0]["values"] as $datapoint) {
-				$y_axis[] = $datapoint["y"];
-				$x_axis[] = $datapoint["x"];
-				$z_axis[] = $datapoint["f"];
 
+		$startYear = $data[0]["values"][0]["x"];
+		$endYear = end($data[0]["values"])["x"];
+
+		foreach(range($startYear, $endYear) as $year) {
+			$yearspan[$year] = 0;
 		}
 
+		foreach($data[0]["values"] as $datapoint) {
+			$y_axis[$datapoint["x"]] = $datapoint["y"];
+			$z_axis[$datapoint["x"]] = $datapoint["f"];
+		}
 
-		echo json_encode(
+		foreach($yearspan as $k=>$v)
+		{
+			$x_axis1[] = $k;
 
-			 array("metadata" => array(
-							"y_axis" => $y_axis,
-							"x_axis" => $x_axis,
-							"z_axis" => $z_axis,
-							"ngram" => $ngram,
-							"corpus" => $corpus
-							))
-			 );
+			if(array_key_exists($k, $y_axis))
+			{
+				$y_axis1[] = $y_axis[$k];
+				$z_axis1[] = $z_axis[$k];
+			}
+			else
+			{
+				$y_axis1[] = 0;
+				$z_axis1[] = 0;
+			}
+		}
+
+echo json_encode(
+
+		 array("metadata" => array(
+						"y_axis" => $y_axis1,
+						"x_axis" => $x_axis1,
+						"z_axis" => $z_axis1
+						"ngram" => $ngram,
+						"corpus" => $corpus
+						))
+		 );
 	} else {
 		echo json_encode(
 			array("message" => "Didn't work")
