@@ -24,7 +24,8 @@ function highcharts(data) {
 					{
 						categories: data.x_axis,
 						type: 'datetime',
-						crosshair: true
+						crosshair: true,
+						xDateFormat: '%Y'  // or your desired format
 						}
 					],
 				yAxis: [
@@ -53,9 +54,17 @@ function highcharts(data) {
 							showEmpty: false
 						}
 					],
-				tooltip: {
-					shared: true
+					tooltip: {
+						shared: true,
+						formatter: function() {
+							var s = '<b>' + this.x + '<b>';
+							$.each(this.points, function() {
+								s += '<br/>' + this.series.name + ': ' + this.y;
+							});
+							return s;
+						}
 					},
+
 					legend: {
 
 						layout: 'vertical',
@@ -96,7 +105,13 @@ function highcharts(data) {
 					connectNulls: true
 				}],
 				exporting: {
-            			filename: exportname
+            			filename: exportname,
+            			buttons: {
+            				contextButton: {
+            					text: 'Export'
+            				}
+            			}
+
         			}
 			});
 	}
@@ -147,4 +162,7 @@ function getDate() {
 			//sparklines(result);
 		});
 	});
+
+
+
 });
