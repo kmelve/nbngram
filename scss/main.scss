@@ -1,7 +1,21 @@
+@import "foundation";
+@import "foundation/settings";
+
 body {
-	background: #fff;
+
 }
 #results {
 	//display: none;
 }
+header {
+	background: $white-smoke;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+}
+.logo {
 
+
+}
+a {
+	color: $primary-color;
+}
