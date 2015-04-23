@@ -1,7 +1,8 @@
 <?php
 //   error_reporting(-1);
 //    ini_set('display_errors', 1);
-	if(isset($_GET['searchquery']) && !empty($_GET['searchquery'])) {
+	if(isset($_GET['searchquery']) && !empty($_GET['searchquery']))
+	{
 		header('Content-type: application/json');
 		$searchstring = $_GET['searchquery'];
 		//$searchstring = "http://www.nb.no/sp_tjenester/beta/ngram_1/ngram/query?terms=spirituell&lang=all&corpus=avis&case_sens=0";
@@ -48,19 +49,20 @@
 			}
 		}
 
-echo json_encode(
-
-		 array("metadata" => array(
-						"y_axis" => $y_axis1,
-						"x_axis" => $x_axis1,
-						"z_axis" => $z_axis1
-						"ngram" => $ngram,
-						"corpus" => $corpus
-						))
-		 );
-	} else {
+		echo json_encode(
+			array("metadata" => array(
+							"y_axis" => $y_axis1,
+							"x_axis" => $x_axis1,
+							"z_axis" => $z_axis1,
+							"ngram" => $ngram,
+							"corpus" => $corpus
+					))
+		);
+	}
+	else
+	{
 		echo json_encode(
 			array("message" => "Didn't work")
 		);
-}
+	}
 ?>
